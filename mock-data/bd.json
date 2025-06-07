@@ -2,11 +2,12 @@
 {
   "alunos": [
     {
-      "nome": "Joana",
-      "apelido": "Silva",
+      "nome": "jose",
+      "apelido": "lopes",
       "curso": 1,
       "anoCurricular": 2,
-      "idade" : 21
+      "idade" : 21,
+      "admin" : 1
     }
   ],
   "cursos": [
