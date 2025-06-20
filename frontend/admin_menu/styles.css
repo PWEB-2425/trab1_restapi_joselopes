@@ -20,14 +20,17 @@
 }
 
 .criar_form {
-   border-style: solid;
-   padding: 20px;
-   border-radius: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 .criar_form form{
     display: flex;
     justify-content: center;
+    border-radius: 5px;
+    padding: 20px;
+    border-style: solid;
+    width: 75%;
 }
 
 .criar_form form div{
