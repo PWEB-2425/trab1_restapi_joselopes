@@ -8,6 +8,14 @@
       "anoCurricular": 2,
       "idade" : 21,
       "admin" : 1
+    },
+    {
+      "nome": "helena",
+      "apelido": "lopes",
+      "curso": 2,
+      "anoCurricular": 2,
+      "idade" : 21,
+      "admin" : 1
     }
   ],
   "cursos": [
