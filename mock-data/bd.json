@@ -12,18 +12,26 @@
     {
       "id": "547a",
       "nome": "helena",
-      "apelido": "lopes",
+      "apelido": "marques",
       "curso": 2,
       "anoCurricular": 2,
-      "idade": 21,
+      "idade": 20,
       "admin": 1
     },
     {
-      "id": "5416",
+      "id": "18f0",
       "nome": "ivo",
       "apelido": "santos",
       "idade": "19",
-      "curso": "1",
+      "curso": "2",
+      "anoCurricular": "1"
+    },
+    {
+      "id": "2d93",
+      "nome": "gabriel",
+      "apelido": "carvalho",
+      "idade": "20",
+      "curso": "2",
       "anoCurricular": "1"
     }
   ],

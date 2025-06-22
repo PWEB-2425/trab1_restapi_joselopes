@@ -51,3 +51,13 @@
     background-color: #7e8784; 
     color: white;
 }
+
+#pesquisa{
+    display: flex;
+    justify-content: center;
+}
+
+#listadealunos{
+    display: flex;
+    justify-content: center;
+}
