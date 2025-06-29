@@ -10,7 +10,7 @@ app.use(express.json());
 app.use('/alunos', alunoRoutes);
 
 mongoose.connect(
-    'mongodb+srv://jose:8854@academicos.pbgpkff.mongodb.net/?retryWrites=true&w=majority&appName=academicos',{
+    process.env.MONGO_URI ||'mongodb+srv://jose:8854@academicos.pbgpkff.mongodb.net/?retryWrites=true&w=majority&appName=academicos',{
         dbName:'academicos'
     })
     .then(() => console.log('Ligação à base de dados com sucesso!'))

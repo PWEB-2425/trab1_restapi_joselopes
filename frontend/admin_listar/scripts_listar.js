@@ -15,8 +15,7 @@ login_abrir.addEventListener("click", function(){
     }
 });
 
-const btn_pesquisa= document.getElementById("btn_pesquisa")
-//btn_pesquisa.addEventListener("click",pesquisa_Alunos)
+
 
 list()
 
@@ -57,4 +56,24 @@ async function apagarAluno(id){
     fetch(`${apiUrl}/${id}`,{method:'DELETE'})
 
     list()
+}
+
+const fname_p = document.getElementById("fname_p")
+const btn_pesquisa= document.getElementById("btn_pesquisa")
+btn_pesquisa.addEventListener("click",pesquisa_Alunos)
+
+async function pesquisa_Alunos(){
+
+    const alunos = {}
+
+    alunos.nome = fname_p.value
+
+    nome_json= JSON.stringify(alunos)
+
+    console.log(nome_json)
+    const res = await fetch(`${apiUrl}/${nome_json}`,{method:'GET'})
+        
+
+    console.log(res)
+
 }

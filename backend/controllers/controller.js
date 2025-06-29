@@ -15,7 +15,14 @@ exports.post = async (req, res) => {
     res.status(201).json(aluno);
 }
     
+
 exports.delete = async(req,res) => {
     const alunos = await aluno.deleteOne(req.body);
 
+}
+
+exports.getById = async(req,res) => {
+    console.log((req.body))
+    const alunos = await aluno.find(req.body)
+    res.json(alunos)
 }
