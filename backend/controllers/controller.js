@@ -3,7 +3,7 @@ const alunosCollection = require('../DB/DB.js');
 
 exports.get = async (req, res) => {
     const alunos = await aluno.find();
-    console.log(alunos);
+    //console.log(alunos);
     res.json(alunos);
 }
 
@@ -17,12 +17,22 @@ exports.post = async (req, res) => {
     
 
 exports.delete = async(req,res) => {
-    const alunos = await aluno.deleteOne(req.body);
+    let id = (req.params.id);
 
+    console.log(id)
+    const alunos = await aluno.deleteOne({ "_id": id });
+
+    
+    
 }
 
 exports.getById = async(req,res) => {
-    console.log((req.body))
-    const alunos = await aluno.find(req.body)
+
+    let nome = (req.params.nome);
+    
+    const alunos = await aluno.find({"nome": nome});
+
+    console.log(alunos)
+    
     res.json(alunos)
 }

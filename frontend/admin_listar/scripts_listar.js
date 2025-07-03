@@ -26,7 +26,7 @@ async function list(){
 
 
     let ulalunos = document.getElementById("listaB");
-    console.log(ulalunos);
+    //console.log(ulalunos);
     ulalunos.innerHTML = "";
 
     for (aluno of alunosJS) {
@@ -54,7 +54,6 @@ async function list(){
 async function apagarAluno(id){
     console.log(id)
     fetch(`${apiUrl}/${id}`,{method:'DELETE'})
-
     list()
 }
 
@@ -62,18 +61,39 @@ const fname_p = document.getElementById("fname_p")
 const btn_pesquisa= document.getElementById("btn_pesquisa")
 btn_pesquisa.addEventListener("click",pesquisa_Alunos)
 
+
+
 async function pesquisa_Alunos(){
 
     const alunos = {}
-
     alunos.nome = fname_p.value
 
     nome_json= JSON.stringify(alunos)
+    const res = await fetch(`${apiUrl}/${fname_p.value}`,{method:'GET'})
+    const alunosRes = await res.json()
+    
 
-    console.log(nome_json)
-    const res = await fetch(`${apiUrl}/${nome_json}`,{method:'GET'})
+    let ulalunos = document.getElementById("listaB");
+    ulalunos.innerHTML = "";
+
+    
+        let novob = document.createElement("button");
+        novob.setAttribute("data-alunoid", alunosRes[0]._id);
+        novob.innerHTML = "remover";
+        novob.addEventListener("click",() => apagarAluno(alunosRes[0]._id));
+
+        let novoli = document.createElement("li");
+        novoli.innerHTML =
+                "nome:"     + alunosRes[0].nome + " " + 
+                "apelido:"  + alunosRes[0].apelido + " " + 
+                "curso:"    + alunosRes[0].curso + " " + 
+                "idade:"    + alunosRes[0].idade + " " + 
+                "ano "      + alunosRes[0].anoCurricular;
+
+        ulalunos.appendChild(novob);
+        ulalunos.appendChild(novoli);
         
-
-    console.log(res)
+    
+        
 
 }
