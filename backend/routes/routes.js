@@ -5,7 +5,11 @@ const alunoCtrl = require('../controllers/controller');
 router.get('/', alunoCtrl.get);
 router.post('/', alunoCtrl.post);
 router.delete('/:id',alunoCtrl.delete);
-router.get('/:nome',alunoCtrl.getById);
+router.put('/:_id',alunoCtrl.put)
+router.get('/nome/:nome',alunoCtrl.getById);
+router.get('/id/:_id',alunoCtrl.getById);
+
+
 
 
 module.exports = router;

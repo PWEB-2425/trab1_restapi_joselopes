@@ -21,18 +21,30 @@ exports.delete = async(req,res) => {
 
     console.log(id)
     const alunos = await aluno.deleteOne({ "_id": id });
-
-    
-    
+       
 }
 
 exports.getById = async(req,res) => {
 
-    let nome = (req.params.nome);
-    
-    const alunos = await aluno.find({"nome": nome});
+    console.log(req.params)
+
+    const alunos = await aluno.find(req.params);
 
     console.log(alunos)
     
     res.json(alunos)
+}
+
+exports.put = async(req, res) =>{
+
+    console.log(req.params)
+    console.log(req.body)
+
+    const alunores = await aluno.findOneAndUpdate(
+        req.params,
+        req.body,
+        { new: true }
+    );
+    
+
 }

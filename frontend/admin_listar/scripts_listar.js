@@ -1,3 +1,5 @@
+
+
 const apiUrl = 'http://localhost:3000/alunos'
 
 const login_abrir  = document.getElementById("admin_button")
@@ -24,32 +26,42 @@ async function list(){
     const res = await fetch(apiUrl)
     const alunosJS = await res.json()
 
-
-    let ulalunos = document.getElementById("listaB");
+    let tbalunos = document.getElementById("tabela");
     //console.log(ulalunos);
-    ulalunos.innerHTML = "";
+    //tbalunos.innerHTML = "";
 
     for (aluno of alunosJS) {
+        const item = document.createElement('tr');
+       
+        item.innerHTML = `
+                        <td>${aluno.nome}</td>
+                        <td>${aluno.apelido}</td>
+                        <td>${aluno.idade}</td>
+                        <td>${aluno.anoEscolar}</td>
+                        <td>${aluno.curso}</td>
+                    `;
 
-        let novob = document.createElement("button");
-        novob.setAttribute("data-alunoid", aluno._id);
-        novob.innerHTML = "remover";
-        novob.addEventListener("click",() => apagarAluno(aluno._id));
+        const btnRemover = document.createElement('button');
+        btnRemover.setAttribute("data-alunoid", aluno._id); 
+        btnRemover.textContent = 'Remover';
+        btnRemover.onclick = () => apagarAluno(aluno._id);
 
-        let novoli = document.createElement("li");
-        novoli.innerHTML =
-                "nome:"     + aluno.nome + " " + 
-                "apelido:"  + aluno.apelido + " " + 
-                "curso:"    + aluno.curso + " " + 
-                "idade:"    + aluno.idade + " " + 
-                "ano "      + aluno.anoCurricular;
 
-        ulalunos.appendChild(novob);
-        ulalunos.appendChild(novoli);
+        const btnatualizar = document.createElement('button');
+        btnatualizar.innerHTML = `<a href="../admin_criar/admin_menu.html?id=${aluno._id}">atualizar</a>`;
+        btnatualizar.setAttribute("data-alunoid", aluno._id);
+        btnatualizar.onclick = () => atualizarAluno(aluno._id);
         
-    }
-        
+
+        item.appendChild(btnRemover);
+        item.appendChild(btnatualizar);
+        tbalunos.appendChild(item);   
+    }    
 }
+
+
+
+
 
 async function apagarAluno(id){
     console.log(id)
@@ -57,43 +69,59 @@ async function apagarAluno(id){
     list()
 }
 
+
+
+
+
+
 const fname_p = document.getElementById("fname_p")
 const btn_pesquisa= document.getElementById("btn_pesquisa")
 btn_pesquisa.addEventListener("click",pesquisa_Alunos)
 
 
-
 async function pesquisa_Alunos(){
 
-    const alunos = {}
-    alunos.nome = fname_p.value
+    const aluno ={}
+    
+    aluno.nome = fname_p.value
+    
 
-    nome_json= JSON.stringify(alunos)
-    const res = await fetch(`${apiUrl}/${fname_p.value}`,{method:'GET'})
+    const res = await fetch(`${apiUrl}/nome/${fname_p.value}`,{method:'GET'})
     const alunosRes = await res.json()
-    
-
-    let ulalunos = document.getElementById("listaB");
-    ulalunos.innerHTML = "";
-
-    
-        let novob = document.createElement("button");
-        novob.setAttribute("data-alunoid", alunosRes[0]._id);
-        novob.innerHTML = "remover";
-        novob.addEventListener("click",() => apagarAluno(alunosRes[0]._id));
-
-        let novoli = document.createElement("li");
-        novoli.innerHTML =
-                "nome:"     + alunosRes[0].nome + " " + 
-                "apelido:"  + alunosRes[0].apelido + " " + 
-                "curso:"    + alunosRes[0].curso + " " + 
-                "idade:"    + alunosRes[0].idade + " " + 
-                "ano "      + alunosRes[0].anoCurricular;
-
-        ulalunos.appendChild(novob);
-        ulalunos.appendChild(novoli);
         
-    
-        
+    let tbalunos = document.getElementById("tabela");
+    console.log(`${apiUrl}/${fname_p.value}`);
+    tbalunos.innerHTML = "";
 
+        const item = document.createElement('tr');
+        const thead = document.createElement('thead')
+        thead.innerHTML='<tr><th>Nome</th><th>Apelido</th><th>Idade</th><th>Ano Escolar</th><th>Curso</th><th>Ações</th></tr>';
+
+        item.innerHTML = `
+                        <td>${alunosRes[0].nome}</td>
+                        <td>${alunosRes[0].apelido}</td>
+                        <td>${alunosRes[0].idade}</td>
+                        <td>${alunosRes[0].anoEscolar}</td>
+                        <td>${alunosRes[0].curso}</td>
+        `;
+
+
+        const btnRemover = document.createElement('button');
+        btnRemover.setAttribute("data-alunoid", (alunosRes[0]._id));
+        btnRemover.textContent = 'Remover';
+        btnRemover.onclick = () => removerAluno(alunosRes[0]._id);
+
+        const btnatualizar = document.createElement('button');
+        btnatualizar.textContent = 'atulizar';
+        btnatualizar.setAttribute("data-alunoid", alunosRes[0]._id);
+        btnatualizar.onclick = () => atualizarAluno(alunosRes[0]._id);
+
+        item.appendChild(btnRemover);
+        item.appendChild(btnatualizar);
+        tbalunos.appendChild(item);     
+}
+
+
+function atualizarAluno(id){
+    
 }
