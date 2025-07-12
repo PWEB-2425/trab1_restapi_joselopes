@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/alunos'
+const apiUrlAlunos = 'http://localhost:3000/alunos'
 
 
 const login_abrir  = document.getElementById("admin_button")
@@ -26,7 +26,7 @@ window.onload = async function()  {
     
         aluno._id = studentId
 
-        const res = await fetch(`${apiUrl}/id/${studentId}`,{method:'GET'})
+        const res = await fetch(`${apiUrlAlunos}/id/${studentId}`,{method:'GET'})
         const alunosRes = await res.json()
 
         console.log(alunosRes)
@@ -66,11 +66,11 @@ async function criarAlunos() {
     if(studentId == null){
         
         if(alunos.curso != "" && alunos.nome != "" && alunos.apelido != "" && alunos.idade != "" && alunos.anoCurricular != ""){
-            const resposta = await fetch(apiUrl, {method: "POST",headers: { 'Content-Type': 'application/json' }, body: alunos_json})
+            const resposta = await fetch(apiUrlAlunos, {method: "POST",headers: { 'Content-Type': 'application/json' }, body: alunos_json})
         }
     }else{
         //alunos._id =studentId;
-        const resposta = await fetch(`${apiUrl}/${studentId}`, {method: "PUT",headers: { 'Content-Type': 'application/json' }, body: alunos_json})
+        const resposta = await fetch(`${apiUrlAlunos}/${studentId}`, {method: "PUT",headers: { 'Content-Type': 'application/json' }, body: alunos_json})
         
     } 
 }   

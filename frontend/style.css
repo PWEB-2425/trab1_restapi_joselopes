@@ -1,58 +1,92 @@
-#header{
-    display: flex;
-    justify-content: center;
-    background-color: rgb(148, 147, 147);
+/* style.css */
+
+/* Global Reset & Defaults */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#header button{
-    position: relative;
-    display: inline-block;
-    left:35%;
-    padding: 15px 28px;
-    margin: 5px;
-    margin-left: 0px;
+body {
+    background-color: #f4f6f8;
+    color: #2c3e50;
+    padding: 20px;
+}
 
+/* Header */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#header h1 {
+    font-size: 24px;
+}
+
+#admin_button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#admin_button:hover {
+    background-color: #2980b9;
+}
+
+/* Admin menu */
+#admin_menu {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#admin_menu button {
+    background-color: #ecf0f1;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#admin_menu button:hover {
+    background-color: #bdc3c7;
+}
+
+#admin_menu a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* Content Area */
+#content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    font-size: 27px;
-   
-    background-color: #7e8784; 
-    color: white;
 }
 
-#admin_button{
-    position:absolute;
+.top h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
 }
 
-#admin_menu{
-    display: none;
-    position: fixed;
-    right: 40px;
-    padding: 29px 31px;
-    margin: 5px;
-    margin-left: 0px;
-    z-index: 1;
-
-    border: 3px solid rgba(0, 0, 0, 0.5);
-    background-color: rgb(0, 0, 0);
-    color: white;
-}
-
-#content{
-    display: flex;
-    justify-content: center;
-}
-
-
-.top{
-    width: 75%;
-    height: 100%;
-    margin-top: 10px;
-    padding: 30px;
-
-    display: flex;
-    justify-content: space-around;
-
-    border-style: solid;
-    border-color: black;
-    border-bottom: none;
+.top img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }

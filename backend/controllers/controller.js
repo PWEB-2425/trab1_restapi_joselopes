@@ -1,5 +1,5 @@
 const aluno = require('../models/models.js')
-const alunosCollection = require('../DB/DB.js');
+
 
 exports.get = async (req, res) => {
     const alunos = await aluno.find();
@@ -21,7 +21,7 @@ exports.delete = async(req,res) => {
 
     console.log(id)
     const alunos = await aluno.deleteOne({ "_id": id });
-       
+    
 }
 
 exports.getById = async(req,res) => {
@@ -40,11 +40,10 @@ exports.put = async(req, res) =>{
     console.log(req.params)
     console.log(req.body)
 
-    const alunores = await aluno.findOneAndUpdate(
-        req.params,
-        req.body,
-        { new: true }
-    );
+    const alunores = await aluno.findOneAndUpdate(req.params,req.body,{ new: true });
     
 
 }
+
+
+

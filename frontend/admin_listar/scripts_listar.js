@@ -1,6 +1,6 @@
 
 
-const apiUrl = 'http://localhost:3000/alunos'
+const apiUrlAlunos = 'http://localhost:3000/alunos'
 
 const login_abrir  = document.getElementById("admin_button")
 const login_form   = document.getElementById("admin_menu")
@@ -23,12 +23,24 @@ list()
 
 async function list(){
     
-    const res = await fetch(apiUrl)
+    const res = await fetch(apiUrlAlunos)
     const alunosJS = await res.json()
 
     let tbalunos = document.getElementById("tabela");
     //console.log(ulalunos);
-    //tbalunos.innerHTML = "";
+    tbalunos.innerHTML = "";
+
+    tbalunos.innerHTML=`
+        <thead >
+            <tr>
+                <th>Nome</th>
+                <th>Apelido</th>
+                <th>Idade</th>
+                <th>Ano Escolar</th>
+                <th>Curso</th>
+                <th>Ações</th>
+            </tr>
+        </thead >`
 
     for (aluno of alunosJS) {
         const item = document.createElement('tr');
@@ -37,7 +49,7 @@ async function list(){
                         <td>${aluno.nome}</td>
                         <td>${aluno.apelido}</td>
                         <td>${aluno.idade}</td>
-                        <td>${aluno.anoEscolar}</td>
+                        <td>${aluno.anoCurricular}</td>
                         <td>${aluno.curso}</td>
                     `;
 
@@ -65,7 +77,8 @@ async function list(){
 
 async function apagarAluno(id){
     console.log(id)
-    fetch(`${apiUrl}/${id}`,{method:'DELETE'})
+    fetch(`${apiUrlAlunos}/${id}`,{method:'DELETE'})
+
     list()
 }
 
@@ -86,22 +99,32 @@ async function pesquisa_Alunos(){
     aluno.nome = fname_p.value
     
 
-    const res = await fetch(`${apiUrl}/nome/${fname_p.value}`,{method:'GET'})
+    const res = await fetch(`${apiUrlAlunos}/nome/${fname_p.value}`,{method:'GET'})
     const alunosRes = await res.json()
         
     let tbalunos = document.getElementById("tabela");
-    console.log(`${apiUrl}/${fname_p.value}`);
     tbalunos.innerHTML = "";
 
+    tbalunos.innerHTML=`
+        <thead >
+            <tr>
+                <th>Nome</th>
+                <th>Apelido</th>
+                <th>Idade</th>
+                <th>Ano Escolar</th>
+                <th>Curso</th>
+                <th>Ações</th>
+            </tr>
+        </thead >`
+
         const item = document.createElement('tr');
-        const thead = document.createElement('thead')
-        thead.innerHTML='<tr><th>Nome</th><th>Apelido</th><th>Idade</th><th>Ano Escolar</th><th>Curso</th><th>Ações</th></tr>';
+        
 
         item.innerHTML = `
                         <td>${alunosRes[0].nome}</td>
                         <td>${alunosRes[0].apelido}</td>
                         <td>${alunosRes[0].idade}</td>
-                        <td>${alunosRes[0].anoEscolar}</td>
+                        <td>${alunosRes[0].anoCurricular}</td>
                         <td>${alunosRes[0].curso}</td>
         `;
 

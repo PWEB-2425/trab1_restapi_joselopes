@@ -1,13 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session');
 const cors = require('cors');
-const alunoRoutes = require('../routes/routes');
 require('dotenv').config();
+
+const alunoRoutes = require('../routes/routes');
+const authRoutes = require('../routes/auth');
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
 app.use('/alunos', alunoRoutes);
+app.use('/auth', authRoutes);
 
 mongoose.connect(
     process.env.MONGO_URI ||'mongodb+srv://jose:8854@academicos.pbgpkff.mongodb.net/?retryWrites=true&w=majority&appName=academicos',{
