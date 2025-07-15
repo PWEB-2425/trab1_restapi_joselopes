@@ -3,7 +3,6 @@
   const alunoSchema = new mongoose.Schema({
     nome: String,
     apelido:String,
-    //password:String,
     curso: String,
     idade: String,
     anoCurricular: String

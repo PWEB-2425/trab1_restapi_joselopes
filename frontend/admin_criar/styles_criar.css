@@ -140,3 +140,24 @@ body {
     background-color: #ecf0f1;
     padding: 8px 12px
 }
+
+/* Table */
+#tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tabela thead {
+    background-color: #34495e;
+    color: white;
+}
+
+#tabela th, #tabela td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#tabela tr:hover {
+    background-color: #f1f1f1;
+}

@@ -1,20 +1,6 @@
 const apiUrlAlunos = 'http://localhost:3000/alunos'
 
-
-const login_abrir  = document.getElementById("admin_button")
-const login_form   = document.getElementById("admin_menu")
-var q = 0;
-
-login_abrir.addEventListener("click", function(){
-    
-    q = q + 1;
-
-    if(q % 2 == 1){
-        login_form.style.display = "block";
-    }else{
-        login_form.style.display = "none";
-    }
-});
+getLast()
 
 
 const params = new URLSearchParams(window.location.search);
@@ -74,3 +60,39 @@ async function criarAlunos() {
         
     } 
 }   
+
+
+async function getLast() {
+    const last = await fetch(`${apiUrlAlunos}/last`,{method:'GET'})
+
+    const alunosRes = await last.json()
+
+    console.log(alunosRes)
+
+    const tbalunos = document.getElementById("tabela")
+
+    tbalunos.innerHTML= " "
+
+    tbalunos.innerHTML=`    <thead >
+            <tr>
+                <th>Nome</th>
+                <th>Apelido</th>
+                <th>Idade</th>
+                <th>Ano Escolar</th>
+                <th>Curso</th>
+            </tr>
+        </thead >`
+
+        const item = document.createElement('tr');
+        
+
+        item.innerHTML = `
+                        <td>${alunosRes[0].nome}</td>
+                        <td>${alunosRes[0].apelido}</td>
+                        <td>${alunosRes[0].idade}</td>
+                        <td>${alunosRes[0].anoCurricular}</td>
+                        <td>${alunosRes[0].curso}</td>
+        `;
+        tbalunos.appendChild(item); 
+
+}

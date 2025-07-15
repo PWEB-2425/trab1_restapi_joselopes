@@ -8,6 +8,7 @@ router.delete('/:id',alunoCtrl.delete);
 router.put('/:_id',alunoCtrl.put)
 router.get('/nome/:nome',alunoCtrl.getById);
 router.get('/id/:_id',alunoCtrl.getById);
+router.get('/last',alunoCtrl.getLast);
 
 
 

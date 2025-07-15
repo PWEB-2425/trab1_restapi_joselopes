@@ -13,7 +13,7 @@
 <body>
     <header id="header">
         <h1>criaçao de alunos</h1>
-         <button id="admin_button" >admin</button>
+        
     </header>
 
     <div id="admin_menu">
@@ -40,8 +40,7 @@
             
                     <label for="anoCurricular">anoCurricular</label><br>
                     <input type="text" id="anoCurricular" name="anoCurricular"><br>
-                    <label for="admin">admin</label><br>
-                    <input type="text" id="admin" name="admin"><br>
+
                 
                     <input type="submit" id="BT_criar">
             </form>  
@@ -51,9 +50,18 @@
         <div id="listadealunos">
             <div id="listaaluno">
                 <h3>Ultimo aluno incerido</h3>
-                <ul id="listaA">
-                    
-                </ul>
+                <table id="tabela">
+                    <thead >
+                        <tr>
+                            <th>Nome</th>
+                            <th>Apelido</th>
+                            <th>Idade</th>
+                            <th>Ano Escolar</th>
+                            <th>Curso</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead >
+                </table>
         </div>
         </div>
     </div>

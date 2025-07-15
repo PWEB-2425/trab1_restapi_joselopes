@@ -2,21 +2,6 @@
 
 const apiUrlAlunos = 'http://localhost:3000/alunos'
 
-const login_abrir  = document.getElementById("admin_button")
-const login_form   = document.getElementById("admin_menu")
-var q = 0;
-
-login_abrir.addEventListener("click", function(){
-    
-    q = q + 1;
-
-    if(q % 2 == 1){
-        login_form.style.display = "block";
-    }else{
-        login_form.style.display = "none";
-    }
-});
-
 
 
 list()
@@ -132,12 +117,13 @@ async function pesquisa_Alunos(){
         const btnRemover = document.createElement('button');
         btnRemover.setAttribute("data-alunoid", (alunosRes[0]._id));
         btnRemover.textContent = 'Remover';
-        btnRemover.onclick = () => removerAluno(alunosRes[0]._id);
+        btnRemover.onclick = () => apagarAluno(alunosRes[0]._id);
 
         const btnatualizar = document.createElement('button');
-        btnatualizar.textContent = 'atulizar';
+         btnatualizar.innerHTML = `<a href="../admin_criar/admin_menu.html?id=${alunosRes[0]._id}">atualizar</a>`;
         btnatualizar.setAttribute("data-alunoid", alunosRes[0]._id);
         btnatualizar.onclick = () => atualizarAluno(alunosRes[0]._id);
+        
 
         item.appendChild(btnRemover);
         item.appendChild(btnatualizar);
@@ -145,6 +131,3 @@ async function pesquisa_Alunos(){
 }
 
 
-function atualizarAluno(id){
-    
-}

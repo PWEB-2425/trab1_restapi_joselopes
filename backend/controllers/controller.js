@@ -1,6 +1,7 @@
 const aluno = require('../models/models.js')
 
 
+
 exports.get = async (req, res) => {
     const alunos = await aluno.find();
     //console.log(alunos);
@@ -42,6 +43,14 @@ exports.put = async(req, res) =>{
 
     const alunores = await aluno.findOneAndUpdate(req.params,req.body,{ new: true });
     
+
+}
+
+exports.getLast = async(req,res) =>{
+
+    const last = await aluno.find({}).sort({_id:-1}).limit(1)
+
+    res.json(last);
 
 }
 
