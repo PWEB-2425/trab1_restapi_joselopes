@@ -55,7 +55,6 @@ async function criarAlunos() {
             const resposta = await fetch(apiUrlAlunos, {method: "POST",headers: { 'Content-Type': 'application/json' }, body: alunos_json})
         }
     }else{
-        //alunos._id =studentId;
         const resposta = await fetch(`${apiUrlAlunos}/${studentId}`, {method: "PUT",headers: { 'Content-Type': 'application/json' }, body: alunos_json})
         
     } 
